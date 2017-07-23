@@ -1,8 +1,11 @@
+function TestFunc(){
+  alert("Change POV image");
+}
 
 function SampleImageTable(){
   for (var i = 0; i < 20; i++) {
-    document.write("<tr><td bgcolor='blue'> IMAGE IMAGE IMAGE  </td></tr>");
-    document.write("<tr><td> IMAGE IMAGE IMAGE </td></tr>");
+    document.write("<tr><td style='width:30px; height:100px;' bgcolor='blue' onclick='TestFunc()'> IMAGE IMAGE IMAGE  </td></tr>");
+    document.write("<tr><td style='width:30px; height:100px;' onclick='TestFunc()'>  IMAGE IMAGE IMAGE </td></tr>");
   }
 }
 

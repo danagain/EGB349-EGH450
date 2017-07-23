@@ -5,11 +5,13 @@
     <title>UAV Website</title>
     <script type="text/javascript" src="../scripts/script.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyB-7M16ks9m_X8Ea2JWvYshv89l2dOxTho" type="text/javascript">
-    </script>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyB-7M16ks9m_X8Ea2JWvYshv89l2dOxTho" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
   </head>
 
-  <body>
+  <body style="background-color:black;">
     <div id="OutterMostWrapper">
       <div id="ImageTable">
         <table>
@@ -30,7 +32,7 @@
           UAVPosition();
         </script>
 
-        <div style="float:left; margin-top:30px; margin-left:30px">
+        <div id="bottomtables">
           <table class="table-fill">
             <thead>
               <tr>
@@ -56,7 +58,7 @@
 
 
 
-        <div style="float:left; margin-top:30px; margin-left:30px">
+        <div id="bottomtables">
           <table class="table-fill">
             <thead>
               <tr>
@@ -87,11 +89,7 @@
           </table>
         </div>
 
-
-
-
-
-        <div style="float:left; margin-top:30px; margin-left:30px">
+        <div id="bottomtables">
           <table class="table-fill">
             <thead>
               <tr>
@@ -115,21 +113,74 @@
           </table>
         </div>
 
+        <script type="text/javascript">
+        var input = 20;
+window.onload = function () {
 
+//Better to construct options first and then pass it as a parameter
+	var c02options = {
+		title: {
+			text: "C02 (PPM)"
+		},
+                animationEnabled: true,
+		data: [
+		{
+			type: "column", //change it to line, area, bar, pie, etc
+			dataPoints: [
+      //  { y: 71, label: "Temp"},
+        {label:"c02", y:71}
 
+			]
+		}
+		]
+	};
+  var tempoptions = {
+    title: {
+      text: "Temp (C)"
+    },
+                animationEnabled: true,
+    data: [
+    {
+      type: "column", //change it to line, area, bar, pie, etc
+      dataPoints: [
+        {label:"Temp", y:24}
+      ]
+    }
+    ]
+  };
+  var humidityoptions = {
+    title: {
+      text: "Humiditiy (%)"
+    },
+                animationEnabled: true,
+    data: [
+    {
+      type: "column", //change it to line, area, bar, pie, etc
+      dataPoints: [
+        {label:"Humidity", y:55}
+      ]
+    }
+    ]
+  };
 
+  $("#humiditygraph").CanvasJSChart(humidityoptions);
+	$("#tempgraph").CanvasJSChart(tempoptions);
+  $("#c02graph").CanvasJSChart(c02options);
+}
 
+</script>
+        <div id="graphbox" style="float:left;">
+          <div id="c02graph">
 
+          </div>
+          <div id="tempgraph">
 
+          </div>
+          <div id="humiditygraph">
 
+          </div>
 
-
-
-
-
-
-
-
+        </div>
 
 
 
