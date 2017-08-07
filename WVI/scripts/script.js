@@ -29,3 +29,77 @@ function UAVPosition() {
         }
     })(marker, i));
 }
+
+function DispGraphs(){
+var humidity  = document.getElementById("humiddata");
+var temp= document.getElementById("tempdata");
+var tempdata = temp.innerHTML;
+var  humiditydata = humidity.innerHTML;
+console.log(humiditydata);
+var colorHumid = "";
+var colorTemp = "";
+if(parseInt(document.getElementById('humiddata').innerHTML) < 300){
+colorHumid = "green";
+}else{
+colorHumid = "red";
+}
+if(parseInt(document.getElementById('tempdata').innerHTML) <= 5){
+colorTemp = "green";
+}else{
+colorTemp = "red";
+}
+
+//Better to construct options first and then pass it as a parameter
+var c02options = {
+title: {
+  text: "C02 (PPM)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  color: "green",
+  dataPoints: [
+  //  { y: 71, label: "Temp"},
+    {label:"c02", y:71}
+
+  ]
+}
+]
+};
+var tempoptions = {
+title: {
+  text: "Temp (C)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  color: colorTemp,
+  dataPoints: [
+    {label:"Temp", y: parseInt(document.getElementById('tempdata').innerHTML)}
+  ]
+}
+]
+};
+
+var humidityoptions = {
+title: {
+  text: "Humiditiy (%)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  color: colorHumid,
+  dataPoints: [
+    {label:"Humidity", y: parseInt(document.getElementById('humiddata').innerHTML)}
+  ]
+}
+]
+};
+
+$("#humiditygraph").CanvasJSChart(humidityoptions);
+$("#tempgraph").CanvasJSChart(tempoptions);
+$("#c02graph").CanvasJSChart(c02options);
+};
