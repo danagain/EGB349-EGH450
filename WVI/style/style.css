@@ -44,6 +44,7 @@ Wrapper id to contain all div elements
   height:320px;
   width:410px;
   border: 1px solid red;
+  float:left;
 }
 #c02graph{
   height:320px;

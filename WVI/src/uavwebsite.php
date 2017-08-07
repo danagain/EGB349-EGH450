@@ -156,6 +156,7 @@ window.onload = function () {
     data: [
     {
       type: "column", //change it to line, area, bar, pie, etc
+      color:"red",
       dataPoints: [
         {label:"Humidity", y:55}
       ]
@@ -169,23 +170,17 @@ window.onload = function () {
 }
 
 </script>
-        <div id="graphbox" style="float:left;">
+        <div id="graphbox">
           <div id="c02graph">
-
           </div>
           <div id="tempgraph">
-
           </div>
           <div id="humiditygraph">
-
           </div>
-
         </div>
-
-
-
       </div>
     </div>
+    <?php include 'gasdata.php'; ?>
   </body>
 
   </html>
