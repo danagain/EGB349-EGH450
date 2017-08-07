@@ -4,10 +4,10 @@ $stmt = $pdo->query("SELECT temp,humidity FROM gas_readings WHERE id = MAX(id)")
 foreach($stmt as $row){
 echo '
 <p id=tempdata>
-'.$row['review'].'
+'.$row['temp'].'
 </p>
 <p id=humiddata>
-'.$row['rating'].'
+'.$row['humidity'].'
 </p>
 ';
 }
