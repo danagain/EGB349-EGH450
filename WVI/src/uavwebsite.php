@@ -112,64 +112,6 @@
             </tbody>
           </table>
         </div>
-
-        <script type="text/javascript">
-        var input = 20;
-window.onload = function () {
-
-//Better to construct options first and then pass it as a parameter
-	var c02options = {
-		title: {
-			text: "C02 (PPM)"
-		},
-                animationEnabled: true,
-		data: [
-		{
-			type: "column", //change it to line, area, bar, pie, etc
-			dataPoints: [
-      //  { y: 71, label: "Temp"},
-        {label:"c02", y:71}
-
-			]
-		}
-		]
-	};
-  var tempoptions = {
-    title: {
-      text: "Temp (C)"
-    },
-                animationEnabled: true,
-    data: [
-    {
-      type: "column", //change it to line, area, bar, pie, etc
-      dataPoints: [
-        {label:"Temp", y:24}
-      ]
-    }
-    ]
-  };
-  var humidityoptions = {
-    title: {
-      text: "Humiditiy (%)"
-    },
-                animationEnabled: true,
-    data: [
-    {
-      type: "column", //change it to line, area, bar, pie, etc
-      color:"red",
-      dataPoints: [
-        {label:"Humidity", y:55}
-      ]
-    }
-    ]
-  };
-
-  $("#humiditygraph").CanvasJSChart(humidityoptions);
-	$("#tempgraph").CanvasJSChart(tempoptions);
-  $("#c02graph").CanvasJSChart(c02options);
-}
-
-</script>
         <div id="graphbox">
           <div id="c02graph">
           </div>
@@ -181,6 +123,63 @@ window.onload = function () {
       </div>
     </div>
     <?php include 'gasdata.php'; ?>
+    <script type="text/javascript">
+    var input = 20;
+window.onload = function () {
+
+//Better to construct options first and then pass it as a parameter
+var c02options = {
+title: {
+  text: "C02 (PPM)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  dataPoints: [
+  //  { y: 71, label: "Temp"},
+    {label:"c02", y:71}
+
+  ]
+}
+]
+};
+var tempoptions = {
+title: {
+  text: "Temp (C)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  dataPoints: [
+    {label:"Temp", y: document.getElementById('tempdata').value}
+  ]
+}
+]
+};
+var humidityoptions = {
+title: {
+  text: "Humiditiy (%)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  color:"red",
+  dataPoints: [
+    {label:"Humidity", y:document.getElementById('humiddata').value}
+  ]
+}
+]
+};
+
+$("#humiditygraph").CanvasJSChart(humidityoptions);
+$("#tempgraph").CanvasJSChart(tempoptions);
+$("#c02graph").CanvasJSChart(c02options);
+}
+
+</script>
   </body>
 
   </html>
