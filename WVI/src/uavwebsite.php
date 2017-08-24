@@ -29,10 +29,9 @@
         <div id="first">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxivY6Gn3XA5ciMou4pS88JQndyxcSgrrDOJJOuI-Y54WQQsAO_A" style="height: 100%;width: 100%;">
         </div>
-        <div id="second"></div>
-        <script>
-          UAVPos();
-        </script>
+        <div id="second" style="margin-left:620px"></div>
+
+	
 
         <div id="bottomtables">
           <table class="table-fill">
@@ -132,6 +131,27 @@ window.onload = function(){
  window.document.body.onload = DispGraphs();
 };
 </script>
+<?php include 'uavlocation.php' ?>
+<script type="text/javascript" language="javascript">
+var x = new Array();
+var y = new Array();
+var z = new Array();
+<?php 
+$pdo = new PDO('mysql:host=127.0.0.1;dbname=UAVDATA', 'root', 'mysql');
+$stmt = $pdo->query("SELECT x,y,z FROM uavloc");
+$stmt->execute();
+foreach($stmt as $row => $val){?>
+x.push('<?php echo $val[x];?>');
+y.push('<?php echo $val[y];?>');
+z.push('<?php echo $val[z];?>');
+<?php
+}?>
+console.log(x);
+console.log(y);
+console.log(z);
+UAVPos(x,y,z);
+</script>
+
   </body>
 
   </html>

@@ -30,17 +30,41 @@ function UAVPosition() {
     })(marker, i));
 }
 
-function UAVPos(){
+function UAVPos(xvector, yvector, zvector){
   Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/_3d-line-plot.csv', function(err, rows){
       function unpack(rows, key) {
           return rows.map(function(row)
           { return row[key]; });
       }
+
+var uav = {
+x:[99,100],
+y:[99,100],
+z:[99,100],
+mode: 'lines',
+name: 'Current UAV Pos',
+  marker: {
+    color: '#9467bd',
+    size: 12,
+    symbol: 'circle',
+    line: {
+      color: 'rgb(0,0,0)',
+      width: 0
+    }
+  },
+  line: {
+    color: '#ff0000',
+    width: 10,
+  },
+  type: 'scatter3d'
+};
+
 var trace1 = {
-  x: unpack(rows, 'x1'),
-  y: unpack(rows, 'y1'),
-  z: unpack(rows, 'z1'),
+  x: xvector,
+  y: yvector,
+  z: zvector,
   mode: 'lines',
+name:'UAV Path',
   marker: {
     color: '#1f77b4',
     size: 12,
@@ -97,19 +121,20 @@ var trace3 = {
   type: 'scatter3d'
 };
 var data = [trace1, trace2, trace3];
+var data2 = [trace1,uav];
 var layout = {
-  title: '3D Line Plot',
+  title: '3D UAV Location Map',
   autosize: false,
-  width: 500,
-  height: 500,
+  width: 600,
+  height: 600,
   margin: {
     l: 0,
     r: 0,
     b: 0,
-    t: 65
+    t: 30
   }
 };
-Plotly.newPlot('second', data, layout); 
+Plotly.newPlot('second', data2, layout); 
 });
 }
 

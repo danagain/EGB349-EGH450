@@ -15,31 +15,60 @@ Wrapper id to contain all div elements
 #wrapper{
   float:left;
   margin-left: 20px;
-  width: 1200px;
-  height:800px;
+  width: 1210px;
+  height:1000px;
   border: 1px solid black;
   overflow: hidden; /* will contain if #first is longer than #second */
 }
 
-
 #first {
     width: 600px;
-    height:400px;
+    height:550px;
     float:left; /* add this */
     border: 1px solid red;
 }
 #second {
-    height:400px;
+  margin-left:10px;
+    height:550px;
     border: 1px solid green;
     overflow: hidden; /* if you don't want #second to wrap below #first */
 }
 
 #OutterMostWrapper{
     min-width: 2000px;
+margin:auto;
+
 }
 
+#graphbox{
+  margin-left:20px;
+  margin-top: 30px;
+  height:320px;
+  width:410px;
+  border: 1px solid red;
+float:left;
+}
+#c02graph{
+  height:320px;
+  width:136px;
+  float:left;
+}
+#tempgraph{
+  height:320px;
+  width:136px;
+  float:left;
+}
+#humiditygraph{
+  height:320px;
+  width:136px;
+  float:left;
+}
 
-
+#bottomtables{
+  float:left;
+  margin-top:30px;
+  margin-left:20px
+}
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
