@@ -21,55 +21,25 @@ Wrapper id to contain all div elements
   overflow: hidden; /* will contain if #first is longer than #second */
 }
 
+
 #first {
-    width: 590px;
+    width: 600px;
     height:400px;
     float:left; /* add this */
     border: 1px solid red;
 }
 #second {
-  margin-left:100px;
     height:400px;
     border: 1px solid green;
     overflow: hidden; /* if you don't want #second to wrap below #first */
 }
 
 #OutterMostWrapper{
-	width: 1400px;
-margin:0 auto;
-position: absolute;
-top: 0; left: 0; bottom: 0; right: 0;
+    min-width: 2000px;
 }
 
-#graphbox{
-  margin-left:20px;
-  margin-top: 30px;
-  height:320px;
-  width:410px;
-  border: 1px solid red;
-  float:left;
-}
-#c02graph{
-  height:320px;
-  width:136px;
-  float:left;
-}
-#tempgraph{
-  height:320px;
-  width:136px;
-  float:left;
-}
-#humiditygraph{
-  height:320px;
-  width:136px;
-  float:left;
-}
 
-#bottomtables{
-  float:left;
-  margin-top:30px;
-  margin-left:20px
-}
+
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
 
