@@ -20,7 +20,7 @@ $array=drawArray(new DirectoryIterator('/home/daniel/catkin_ws/images/'));
 
 $arrlen = count($array);
 $img = end($array);
-$imgdir = 'images/'.$img;
+$imgdir = '../../../images/'.$img;
 echo '<div id="wrapper">';
 echo '<div id="first">';
 echo '<img src="'.$imgdir.'" style="height:100%;width: 100%";>';
