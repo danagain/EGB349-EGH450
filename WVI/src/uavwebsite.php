@@ -25,7 +25,10 @@
           </script>
         </table>
       </div>
+	<div id="wrapper">
+	<div id="first">
 	<?php include 'image_fetcher.php'; ?>
+	</div>
         <div id="second" style="margin-left:620px"></div>
 
 	
