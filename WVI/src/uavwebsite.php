@@ -25,10 +25,7 @@
           </script>
         </table>
       </div>
-      <div id="wrapper">
-        <div id="first">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxivY6Gn3XA5ciMou4pS88JQndyxcSgrrDOJJOuI-Y54WQQsAO_A" style="height: 100%;width: 100%;">
-        </div>
+	<?php include 'image_fetcher.php'; ?>
         <div id="second" style="margin-left:620px"></div>
 
 	
@@ -153,5 +150,6 @@ UAVPos(x,y,z);
 </script>
 
   </body>
+
 
   </html>
