@@ -38,9 +38,9 @@ function UAVPos(xvector, yvector, zvector){
       }
 
 var uav = {
-x:[99,100],
-y:[99,100],
-z:[99,100],
+//x:[99,100],
+//y:[99,100],
+//z:[99,100],
 mode: 'lines',
 name: 'Current UAV Pos',
   marker: {
@@ -122,6 +122,7 @@ var trace3 = {
 };
 var data = [trace1, trace2, trace3];
 var data2 = [trace1,uav];
+var data3 = [trace1];
 var layout = {
   title: '3D UAV Location Map',
   autosize: false,
@@ -134,7 +135,7 @@ var layout = {
     t: 30
   }
 };
-Plotly.newPlot('second', data2, layout); 
+Plotly.newPlot('second', data3, layout); 
 });
 }
 

@@ -131,7 +131,7 @@ window.onload = function(){
  window.document.body.onload = DispGraphs();
 };
 </script>
-<?php include 'uavlocation.php' ?>
+<?php //include 'uavlocation.php' ?>
 <script type="text/javascript" language="javascript">
 var x = new Array();
 var y = new Array();
