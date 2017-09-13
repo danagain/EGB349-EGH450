@@ -25,7 +25,8 @@ class image_feature:
 	'''Making a datetime string for the imagename'''
 	date_string = time.strftime("%Y-%m-%d-%H:%M:%S")
 	print(date_string)
-        cv2.imwrite('images/'+date_string+'.jpeg', image_np)
+        cv2.imwrite('../../../images/'+date_string+'.jpeg', image_np)
+	cv2.imwrite('../../../images/currentimg/img.jpeg', image_np)
         cv2.waitKey(2)
 
 def main(args):
