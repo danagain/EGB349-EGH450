@@ -25,14 +25,14 @@ class image_feature:
 	'''Making a datetime string for the imagename'''
 	date_string = time.strftime("%Y-%m-%d-%H:%M:%S")
 	print(date_string)
-        cv2.imwrite('../../../images/'+date_string+'.jpeg', image_np)
-	cv2.imwrite('../../../images/currentimg/img.jpeg', image_np)
+        cv2.imwrite('/usr/local/ampps/www/images/'+date_string+'.jpeg', image_np)
+	cv2.imwrite('/usr/local/ampps/www/images/currentimg/img.jpeg', image_np)
         cv2.waitKey(2)
 
 def main(args):
     '''Initializes and cleanup ros node'''
     ic = image_feature()
-    rospy.init_node('image_feature', anonymous=True)
+    rospy.init_node('images', anonymous=True)
     try:
         rospy.spin()
     except KeyboardInterrupt:

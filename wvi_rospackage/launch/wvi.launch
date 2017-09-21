@@ -1,0 +1,12 @@
+<launch>
+
+        <!-- Subscribe to xyz pose -->
+        <node pkg="wvi" name="goal_listener" type="xyzpose_sub.py" />
+
+        <!-- Subscribe to temp, humidity, c02 -->
+        <node pkg="wvi" name="gasdata" type="syncgasdata_sub.py" />
+
+        <!-- Image sub -->
+        <node pkg="wvi" name="images" type="image_sub.py" />
+
+</launch>

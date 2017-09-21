@@ -2,7 +2,7 @@
 
 import rospy
 import message_filters
-from std_msgs.msg import Int32
+from sensor_msgs.msg import Temperature
 import MySQLdb
 
 #global variable to track the id number in the gas readings mysql table
@@ -19,7 +19,7 @@ def callback(gas_a, gas_b):
 if __name__ == '__main__':
   count = 3
   # Initialize
-  rospy.init_node('filter_py')
+  rospy.init_node('gasdata')
 
 #init mysql connection
   db = MySQLdb.connect("127.0.0.1","root","mysql","UAVDATA" )
@@ -35,7 +35,7 @@ if __name__ == '__main__':
   cursor.execute(sql)
 
 
-  ga_sub = message_filters.Subscriber('/emulator/sensors/gas/a', Int32, queue_size=10)
+  ga_sub = message_filters.Subscriber('sensor_msgs/Temperature', Temperature, queue_size=10)
   gb_sub = message_filters.Subscriber('/emulator/sensors/gas/b', Int32, queue_size=10)
   ts = message_filters.ApproximateTimeSynchronizer([ga_sub, gb_sub], 10, 0.1, allow_headerless=True)
   ts.registerCallback(callback)
