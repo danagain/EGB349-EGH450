@@ -5,8 +5,6 @@
     <title>UAV Website</title>
     <script type="text/javascript" src="../scripts/script.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-  <!-- Plotly.js   <script src="http://maps.google.com/maps/api/js?key=AIzaSyB-7M16ks9m_X8Ea2JWvYshv89l2dOxTho" type="text/javascript"></script>-->
-    <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
     <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
 <!-- Plotly.js -->
@@ -153,7 +151,6 @@ console.log(y);
 console.log(z);
 UAVPos(x,y,z);
 </script>
-
   </body>
 
 

@@ -28,8 +28,9 @@ foreach($files as $file){
 //$img = $array[0];
 $imgdir = '../../../images/currentimg/img.jpeg';
 //echo '<p>'.$imgdir.'</p>';
-echo '<img id="mainimg" src="'.$imgdir.'" style="height:100%;width: 100%";>';
-
+//echo '<img id="mainimg" src="'.$imgdir.'" style="height:100%;width: 100%";>';
+$img = json_encode($imgdir);
+echo $img;
 
 ?>
 

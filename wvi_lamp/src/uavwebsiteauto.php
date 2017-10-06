@@ -3,35 +3,38 @@
 
   <head>
     <title>UAV Website</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script type="text/javascript" src="../scripts/script.js"></script>
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-     <!-- <script src="http://maps.google.com/maps/api/js?key=AIzaSyB-7M16ks9m_X8Ea2JWvYshv89l2dOxTho" type="text/javascript"> </script> -->
-     <!-- Plotly.js -->
-        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+<!-- Plotly.js -->
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
   </head>
 
-  <body>
+  <body style="background-color:black;">
     <div id="OutterMostWrapper">
       <div id="ImageTable">
         <table>
           <th>
             Image Stream
           </th>
-          <script>
+         <!-- <script>
             SampleImageTable();
-          </script>
+          </script> -->
+	<?php include 'sidebarimage.php'; ?>
         </table>
       </div>
-      <div id="wrapper">
-        <div id="first">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxivY6Gn3XA5ciMou4pS88JQndyxcSgrrDOJJOuI-Y54WQQsAO_A" style="height: 100%;width: 100%;">
-        </div>
-        <div id="second"></div>
-        <script>
-          UAVPos();
-        </script>
+	<div id="wrapper">
+	<div id="first">
+	<img id="mainimg" src="" style="height:100%;width: 100%";>
+	</div>
+        <div id="second" style="margin-left:620px"></div>
 
-        <div style="float:left; margin-top:30px; margin-left:30px">
+	
+
+        <div id="bottomtables">
           <table class="table-fill">
             <thead>
               <tr>
@@ -57,7 +60,7 @@
 
 
 
-        <div style="float:left; margin-top:30px; margin-left:30px">
+        <div id="bottomtables">
           <table class="table-fill">
             <thead>
               <tr>
@@ -74,7 +77,7 @@
               </tr>
               <tr>
                 <td class="text-left">B</td>
-                <td class="text-left">330 ppm</td>
+                <td class="text-left" id="debug">330 ppm</td>
                 <td class="text-left">22.3C</td>
                 <td class="text-left">14%</td>
               </tr>
@@ -87,7 +90,8 @@
             </tbody>
           </table>
         </div>
-        <div style="float:left; margin-top:30px; margin-left:30px">
+
+        <div id="bottomtables">
           <table class="table-fill">
             <thead>
               <tr>
@@ -96,8 +100,9 @@
             </thead>
             <tbody class="table-hover">
               <tr>
-                <td class="text-left">Armed</td>
-                <td class="text-left">TRUE</td>
+		<?php include 'uavstate.php';  ?>
+                <!--<td class="text-left">Armed</td>
+                <td class="text-left">TRUE</td> -->
               </tr>
               <tr>
                 <td class="text-left">Flying</td>
@@ -110,27 +115,48 @@
             </tbody>
           </table>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        <div id="graphbox">
+          <div id="c02graph">
+          </div>
+          <div id="tempgraph">
+          </div>
+          <div id="humiditygraph">
+          </div>
+        </div>
       </div>
     </div>
+    <?php include 'gasdata.php'; ?>
+    <script type="text/javascript">
+      //deferred onload
+    var input = 20;
+window.onload = function(){
+ window.document.body.onload = DispGraphs();
+};
+</script>
+
+<script type="text/javascript" language="javascript">
+
+setInterval(function(){
+$.getJSON("test.php", function(data){
+var x = JSON.parse(data[0]);
+var y = JSON.parse(data[1]);
+var z = JSON.parse(data[2]);
+UAVPos(x, y, z);
+});
+//console.log("Test");
+},5000);
+
+setInterval(function(){
+$.getJSON("image_fetcher.php", function(data){
+document.getElementById("mainimg").src = data;
+console.log(data);
+
+});
+//console.log("Test");
+},1000);
+
+</script>
   </body>
+
 
   </html>
