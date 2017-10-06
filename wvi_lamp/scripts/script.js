@@ -2,6 +2,11 @@ function TestFunc(){
   alert("Change POV image");
 }
 
+function swap(image){
+ // alert("Change POV image");
+document.getElementById("mainimg").src = image.name;
+}
+
 function SampleImageTable(){
   for (var i = 0; i < 20; i++) {
     document.write("<tr><td style='width:30px; height:100px;' bgcolor='blue' onclick='TestFunc()'> IMAGE IMAGE IMAGE  </td></tr>");
@@ -41,6 +46,12 @@ var uav = {
 //x:[99,100],
 //y:[99,100],
 //z:[99,100],
+//var x[];
+//var y[];
+//var z[];
+x: xvector.slice(-2),
+y: yvector.slice(-2),
+z: zvector.slice(-2),
 mode: 'lines',
 name: 'Current UAV Pos',
   marker: {
@@ -135,7 +146,7 @@ var layout = {
     t: 30
   }
 };
-Plotly.newPlot('second', data3, layout); 
+Plotly.newPlot('second', data2, layout); 
 });
 }
 

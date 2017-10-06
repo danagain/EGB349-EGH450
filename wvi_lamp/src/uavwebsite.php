@@ -20,9 +20,10 @@
           <th>
             Image Stream
           </th>
-          <script>
+         <!-- <script>
             SampleImageTable();
-          </script>
+          </script> -->
+	<?php include 'sidebarimage.php'; ?>
         </table>
       </div>
 	<div id="wrapper">
@@ -99,8 +100,9 @@
             </thead>
             <tbody class="table-hover">
               <tr>
-                <td class="text-left">Armed</td>
-                <td class="text-left">TRUE</td>
+		<?php include 'uavstate.php';  ?>
+                <!--<td class="text-left">Armed</td>
+                <td class="text-left">TRUE</td> -->
               </tr>
               <tr>
                 <td class="text-left">Flying</td>

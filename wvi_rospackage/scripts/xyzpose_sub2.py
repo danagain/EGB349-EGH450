@@ -36,7 +36,7 @@ def callback(msg):
 
 def listener():
     rospy.init_node('goal_listener', anonymous=True)
-    rospy.Subscriber("/mavros/mocap/pose", PoseStamped, callback)
+    rospy.Subscriber("/emulator/pose", PoseStamped, callback)
     rospy.spin()
 
 def initDB():
