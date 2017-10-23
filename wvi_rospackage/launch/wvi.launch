@@ -4,13 +4,16 @@
         <node pkg="wvi" name="goal_listener" type="xyzpose_sub.py" />
 
         <!-- Subscribe to temp, humidity, c02 -->
-        <!--<node pkg="wvi" name="gasdata" type="syncgasdata_sub.py" />-->
+        <!--<node pkg="wvi" name="gasdata" type="all_sensors_sub.py" />-->
 
         <!-- Image sub -->
         <node pkg="wvi" name="images" type="image_sub.py" />
 
         <!-- uavstate sub -->
-        <node pkg="wvi" name="state_listener" type="uavstate_sub.py" />
+        <!--<node pkg="wvi" name="state_listener" type="uavstate_sub.py" />-->
+
+        <!-- uavgoal sub -->
+        <!--<node pkg="wvi" name="goal_listener_state" type="uav_goal_sub.py" />-->
 
 
 </launch>

@@ -15,27 +15,32 @@ cursor = db.cursor()
 
 
 def callback(msg):
-    rospy.loginfo("Received at goal message!")
-    rospy.loginfo("Timestamp: " + str(msg.header.stamp))
-    rospy.loginfo("frame_id: " + str(msg.header.frame_id))
+    #rospy.loginfo("Received at goal message!")
+    #rospy.loginfo("Timestamp: " + str(msg.header.stamp))
+    #rospy.loginfo("frame_id: " + str(msg.header.frame_id))
 
     # Copying for simplicity
     position = msg.pose.position
-    quat = msg.pose.orientation
+    #quat = msg.pose.orientation
     rospy.loginfo("Point Position: [ %f, %f, %f ]"%(position.x, position.y, position.z))
-    rospy.loginfo("Quat Orientation: [ %f, %f, %f, %f]"%(quat.x, quat.y, quat.z, quat.w))
+    #rospy.loginfo("Quat Orientation: [ %f, %f, %f, %f]"%(quat.x, quat.y, quat.z, quat.w))
 
     # Also print Roll, Pitch, Yaw
-    euler = tf.transformations.euler_from_quaternion([quat.x, quat.y, quat.z, quat.w])
-    rospy.loginfo("Euler Angles: %s"%str(euler))  
+    #euler = tf.transformations.euler_from_quaternion([quat.x, quat.y, quat.z, quat.w])
+    #roll = euler[0]
+    #pitch = euler[1]
+    #yaw = euler[2]
+    #rospy.loginfo("roll %s pitch %s yaw %s "%str(euler)) 
+    #print("roll %s, pitch %s, yaw %s", roll, pitch, yaw) 
     global cursor
     global loc_readings_count
     loc_readings_count = loc_readings_count + 1
-    cursor.execute("""INSERT INTO uavloc VALUES (%s, %s, %s, %s)""", (position.x,position.y,position.z,loc_readings_count))
+    cursor.execute("""INSERT INTO uavgoal VALUES (%s, %s, %s, %s)""", (position.x,position.y,position.z,loc_readings_count))
     db.commit()
 
 def listener():
-    rospy.init_node('goal_listener', anonymous=True)
+    rospy.init_node('goal_listener_state', anonymous=True)
+    #rospy.Subscriber("/marvos/setpoint_position/local", PoseStamped, callback)
     rospy.Subscriber("/emulator/pose", PoseStamped, callback)
     rospy.spin()
 
@@ -46,19 +51,20 @@ def initDB():
   global db
   global cursor
 #make a fresh table for the data every session
-  cursor.execute("DROP TABLE IF EXISTS uavloc")
+  cursor.execute("DROP TABLE IF EXISTS uavgoal")
 #remaking the table
-  sql = """CREATE TABLE uavloc (
+  sql = """CREATE TABLE uavgoal (
           x FLOAT,  
           y FLOAT,
 	  z FLOAT,	
 	  id INT )"""
   cursor.execute(sql)
 #creating primary key
-  sql2 = """ALTER TABLE uavloc ADD PRIMARY KEY(id)"""
+  sql2 = """ALTER TABLE uavgoal ADD PRIMARY KEY(id)"""
   cursor.execute(sql2)
 
 
 if __name__ == '__main__':
     initDB()
     listener()
+

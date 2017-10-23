@@ -32,7 +32,7 @@ class image_feature:
 	print(date_string)
         cv2.imwrite('/usr/local/ampps/www/images/'+date_string+'.jpeg', image_np)
 	imgname = date_string+'.jpeg'
-	cv2.imwrite('/usr/local/ampps/www/images/currentimg/img.jpeg', image_np)
+	#cv2.imwrite('/usr/local/ampps/www/images/currentimg/'+date_string+'.jpeg', image_np)
  	cursor.execute("""INSERT INTO imgnames VALUES (%s, %s)""",(imgname,img_readings_count))
   	db.commit()
         cv2.waitKey(2)

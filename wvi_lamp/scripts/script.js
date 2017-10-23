@@ -3,8 +3,8 @@ function TestFunc(){
 }
 
 function swap(image){
- // alert("Change POV image");
-document.getElementById("mainimg").src = image.name;
+ //alert("Change POV image");
+document.getElementById("mainimg").src = image.src;
 }
 
 function SampleImageTable(){
@@ -154,20 +154,27 @@ Plotly.newPlot('second', data2, layout);
 function DispGraphs(){
 var humidity  = document.getElementById("humiddata");
 var temp= document.getElementById("tempdata");
+var c02 = document.getElementById("c02data");
 var tempdata = temp.innerHTML;
 var  humiditydata = humidity.innerHTML;
-console.log(humiditydata);
+//console.log(humiditydata);
 var colorHumid = "";
 var colorTemp = "";
-if(parseInt(document.getElementById('humiddata').innerHTML) < 300){
+if(parseInt(document.getElementById('humiddata').innerHTML) < 800){
 colorHumid = "green";
 }else{
 colorHumid = "red";
 }
-if(parseInt(document.getElementById('tempdata').innerHTML) <= 5){
+if(parseInt(document.getElementById('tempdata').innerHTML) < 27){
 colorTemp = "green";
 }else{
 colorTemp = "red";
+}
+
+if(parseInt(document.getElementById('c02data').innerHTML) > 150){
+colorc02 = "green";
+}else{
+colorc02 = "red";
 }
 
 //Better to construct options first and then pass it as a parameter
@@ -179,10 +186,10 @@ title: {
 data: [
 {
   type: "column", //change it to line, area, bar, pie, etc
-  color: "green",
+  color: colorc02,
   dataPoints: [
   //  { y: 71, label: "Temp"},
-    {label:"c02", y:71}
+    {label:"c02", y:parseInt(document.getElementById('c02data').innerHTML)}
 
   ]
 }
@@ -215,6 +222,83 @@ data: [
   color: colorHumid,
   dataPoints: [
     {label:"Humidity", y: parseInt(document.getElementById('humiddata').innerHTML)}
+  ]
+}
+]
+};
+
+$("#humiditygraph").CanvasJSChart(humidityoptions);
+$("#tempgraph").CanvasJSChart(tempoptions);
+$("#c02graph").CanvasJSChart(c02options);
+};
+
+
+function DispGraphsauto(temp, humid, c02){
+//console.log(temp);
+//console.log(humid);
+var colorHumid = "";
+var colorTemp = "";
+if(humid < 300){
+colorHumid = "green";
+}else{
+colorHumid = "red";
+}
+if(temp <= 27){
+colorTemp = "green";
+}else{
+colorTemp = "red";
+}
+if(c02 <= 600){
+colorC02 = "green";
+}else{
+colorC02 = "red";
+}
+
+//Better to construct options first and then pass it as a parameter
+var c02options = {
+title: {
+  text: "C02 (PPM)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  color: colorC02,
+  dataPoints: [
+  //  { y: 71, label: "Temp"},
+    {label:"c02", y:c02}
+
+  ]
+}
+]
+};
+var tempoptions = {
+title: {
+  text: "Temp (C)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  color: colorTemp,
+  dataPoints: [
+    {label:"Temp", y: temp}
+  ]
+}
+]
+};
+
+var humidityoptions = {
+title: {
+  text: "Humiditiy (%)"
+},
+            animationEnabled: true,
+data: [
+{
+  type: "column", //change it to line, area, bar, pie, etc
+  color: colorHumid,
+  dataPoints: [
+    {label:"Humidity", y: humid}
   ]
 }
 ]
